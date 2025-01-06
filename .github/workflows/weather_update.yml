@@ -21,6 +21,7 @@ jobs:
         env:
             GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
+          git pull
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"  # Bu adım önemli
           git add README.md  # README.md'yi Git'e ekle
