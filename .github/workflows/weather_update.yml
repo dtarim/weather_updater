@@ -1,0 +1,27 @@
+name: Update Weather Info
+
+on:
+  schedule:
+    - cron: '*/1 * * * *'  # 5 dakikada bir çalıştırma
+
+jobs:
+  update_weather:
+    runs-on: ubuntu-latest  # Ubuntu üzerinde çalışacak
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2  # Repo'yu çekmek için
+
+        - name: Run weather update script
+        run: |
+          ./weather_update.sh  # weather_update.sh betiğini çalıştırır
+        
+        - name: Push changes
+        env:
+            GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"  # Bu adım önemli
+          git add README.md  # README.md'yi Git'e ekle
+          git commit -m "Update weather info"  # Commit mesajı
+          git push
