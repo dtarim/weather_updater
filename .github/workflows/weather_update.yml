@@ -1,6 +1,7 @@
 name: Update Weather Info
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '*/1 * * * *'  # 5 dakikada bir çalıştırma
 
