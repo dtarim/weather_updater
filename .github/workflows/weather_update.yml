@@ -12,11 +12,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2  # Repo'yu çekmek için
 
-        - name: Run weather update script
+      - name: Run weather update script
         run: |
           ./weather_update.sh  # weather_update.sh betiğini çalıştırır
-        
-        - name: Push changes
+      
+      - name: Push changes
         env:
             GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
